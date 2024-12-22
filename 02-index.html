@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1 t-text="message"></h1>
+        <span t-text="image"></span>
+        <br />
+        <br />
+        <input type="text" t-model="message" />
+        <input type="text" t-model="image" />
+        
+        <br />
+        <br />
+        <a target="_blank" t-bind="href:link">Click!</a>
+        <br />
+        <br />
+
+        <img t-bind="src:image" />
+    </div>
+
+    <script src="./miniFramework.js"></script>
+    <script>
+        const { createApp } = myFramework;
+
+        const app = createApp({
+            data() {
+                return {
+                    message: 'Hello tiken!',
+                    image: 'https://images.pexels.com/photos/10905401/pexels-photo-10905401.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                    link: 'https://cooluprecords.com',
+                };
+            }
+        });
+        app.mount();
+    </script>
+</body>
+</html>

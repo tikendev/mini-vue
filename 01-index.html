@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World!</title>
+</head>
+<body>
+    <!-- Primeros pasos con Vue y diferencias con Vanilla JS -->
+
+    <div id="app">
+        <span v-text="message"></span>
+        <br />
+        <br />
+        <input type="text" v-model="message">
+    </div>
+    <!-- <br />
+    <input type="text"> -->
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp } = Vue;
+
+        const app = createApp({
+            data() {
+                return {
+                    message: 'Hello Vue!',
+                }
+            }
+        })
+
+        app.mount('#app');
+    </script>
+    <!-- <script>
+        const data = {
+            message: 'Hello World!',
+        };
+
+        const span = document.querySelector('span');
+        span.textContent = data.message;
+
+        const input = document.querySelector('input');
+
+        input.value = data.message;
+        input.addEventListener('input', () => {
+            data.message = input.value;
+            span.textContent = data.message;
+        });
+    </script> -->
+</body>
+</html>
