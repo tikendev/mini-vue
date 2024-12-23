@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueCommerce - Option API</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h3>VueCommerce</h3>
+            <button class="cart" v-on:click="cartOpen = !cartOpen">Cart ({{ cart.length }})</button>
+            <div class="cart-content" v-show="cartOpen">
+                <div class="cart-content__product" v-for="(product, index) in cart" :key="product.name" key="product.name" :class="{ 'bg-gray': index & 1 }">
+                    <img v-bind:src="product.images[0].image" v-bind:alt="product.name" />
+                    <span>{{ product.name }} - {{ new Intl.NumberFormat("es-ES").format(product.price) }}€</span>
+                    <span class="product-quantity">{{ product.quantity }}</span>
+                </div>
+                <p>Total: {{ new Intl.NumberFormat('es-ES').format(total) }}€</p>
+            </div>
+        </header>
+        <main>
+            <product v-for="product in products" :key="product.name" :product="product" @sendtocart="addToCart"></product>
+        </main>
+    </div>
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp } = Vue;
+
+        const app = createApp({
+            data() {
+                return {
+                    products: [],
+                    cartOpen: false,
+                    total: 0,
+                    cart: [],
+                };
+            },
+            methods: {
+                addToCart(product) {
+                    const productIndex = this.cart.findIndex(prod => prod.name === product.name);
+
+                    if (productIndex >= 0) {
+                        this.cart[productIndex].quantity += 1;
+                    } else {
+                        this.cart.push(product);
+                    }
+
+                    product.stock -= 1;
+                    this.cartOpen = true;
+                }
+            },
+            // watch: {
+            //     cart: {
+            //         handler(cart) {
+            //             this.total = cart.reduce((prev, current) => {
+            //                 const prevPrice = prev.price || prev;
+            //                 const prevQuantity = prev.quantity || 1;
+
+            //                 return prevPrice * prevQuantity + current.price * current.quantity;
+            //             }, 0);
+            //         },
+            //         deep: true,
+            //     }
+            // },
+            computed: {
+                total() {
+                    return this.cart.reduce((total, current) => {
+                        return total + current.price * current.quantity;
+                    }, 0);
+                }
+            },
+            beforeCreate() {
+                console.log('Before Create');
+            },
+            async created() {
+                try {
+                    const resp = await fetch('http://localhost:3001/products');
+                    const data = await resp.json();
+
+                    this.products = data.products;
+                } catch (error) {
+                    console.error(`Error: ${error}, message: Fallo con la comunicación API`);
+                }
+
+            },
+        });
+    </script>
+
+    <script src="./Badge.js"></script>
+    <script src="./Product.js"></script>
+
+    <script>
+        app.mount('#app');
+    </script>
+</body>
+</html>

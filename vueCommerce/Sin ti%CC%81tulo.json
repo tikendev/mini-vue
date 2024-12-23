@@ -1,0 +1,94 @@
+{
+  "uuid": "1e0ee9a6-ea61-4c59-8b77-986abf500e20",
+  "lastMigration": 33,
+  "name": "Sin título",
+  "endpointPrefix": "products",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "2ded8886-9f8e-4017-9189-1b8e08a635c1",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "",
+      "responses": [
+        {
+          "uuid": "6152de23-2c6b-4e75-87aa-e389ea4df943",
+          "body": "{\n  \"products\": [\n    {\n      \"name\": \"Camera\",\n      \"price\": 500000,\n      \"stock\": 5,\n      \"content\": \"Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis aperiam ut officiis exercitationem quod quos labore vero, fugit voluptates error voluptatum explicabo cum nostrum saepe, ullam beatae odio architecto eum.\",\n      \"images\": [\n        {\n          \"image\": \"./images/camara.jpg\",\n          \"thumbnail\": \"./images/camara-thumb.jpg\"\n        },\n        {\n          \"image\": \"./images/camara-2.jpg\",\n          \"thumbnail\": \"./images/camara-2-thumb.jpg\"\n        }\n      ],\n      \"new\": true,\n      \"offer\": false,\n      \"quantity\": 1\n    },\n    {\n      \"name\": \"Camera Plus 2\",\n      \"price\": 900000,\n      \"stock\": 6,\n      \"content\": \"Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis aperiam ut officiis exercitationem quod quos labore vero, fugit voluptates error voluptatum explicabo cum nostrum saepe, ullam beatae odio architecto eum.\",\n      \"images\": [\n        {\n          \"image\": \"./images/camara.jpg\",\n          \"thumbnail\": \"./images/camara-thumb.jpg\"\n        },\n        {\n          \"image\": \"./images/camara-2.jpg\",\n          \"thumbnail\": \"./images/camara-2-thumb.jpg\"\n        }\n      ],\n      \"new\": false,\n      \"offer\": true,\n      \"quantity\": 1\n    },\n    {\n      \"name\": \"Camera X-HD\",\n      \"price\": 2500000,\n      \"stock\": 2,\n      \"content\": \"Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis aperiam ut officiis exercitationem quod quos labore vero, fugit voluptates error voluptatum explicabo cum nostrum saepe, ullam beatae odio architecto eum.\",\n      \"images\": [\n        {\n          \"image\": \"./images/camara.jpg\",\n          \"thumbnail\": \"./images/camara-thumb.jpg\"\n        },\n        {\n          \"image\": \"./images/camara-2.jpg\",\n          \"thumbnail\": \"./images/camara-2-thumb.jpg\"\n        }\n      ],\n      \"new\": true,\n      \"offer\": true,\n      \"quantity\": 1\n    }\n  ]\n}\n",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "2ded8886-9f8e-4017-9189-1b8e08a635c1"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}
